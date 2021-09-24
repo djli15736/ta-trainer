@@ -19,7 +19,7 @@ export function AddCardModal({visible, setVisible, addCard}:
 
     const hide = () => setVisible(false);
     return (
-    <Modal show={visible} onHide={hide}>
+    <Modal data-testid="modal" show={visible} onHide={hide}>
       <Modal.Header closeButton>
         <Modal.Title>Add New Card</Modal.Title>
       </Modal.Header>
@@ -28,13 +28,13 @@ export function AddCardModal({visible, setVisible, addCard}:
       <Form>
         <Form.Group className="mb-3" controlId="addCardForm.promptTextArea">
           <Form.Label>Prompt</Form.Label>
-          <Form.Control as="textarea" rows={3}
+          <Form.Control as="textarea" data-testid="prompt-textarea" rows={3}
             value={prompt}
             onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setPrompt(ev.target.value)}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="addCardForm.answerTextArea">
           <Form.Label>Suggested Answer</Form.Label>
-          <Form.Control as="textarea" rows={3} 
+          <Form.Control as="textarea" data-testid="answer-textarea" rows={3} 
             value={answer}
             onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>) => setAnswer(ev.target.value)}/>
         </Form.Group>
@@ -42,7 +42,7 @@ export function AddCardModal({visible, setVisible, addCard}:
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary" onClick={hide}>Close</Button>
+        <Button data-testid="close-button" variant="secondary" onClick={hide}>Close</Button>
         <Button variant="primary" onClick={saveCard}>Save changes</Button>
       </Modal.Footer>
     </Modal>)
